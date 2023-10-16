@@ -11,13 +11,12 @@
 #include <errno.h>
 #include <string.h>
 
-
+void _strtok(const char *string, const char *dm);
 int printchar(char c);
 int comp_str(char *str1, char *str2);
 void prompt_print(void);
 char *getenv_manual(const char *name);
 char *get_input();
-void _strtok(const char *string, char dm);
 void error_output(void);
 void cmd_err_msg(void);
 void cmd_execution(char *exec, char *const *exec_args, char *path);

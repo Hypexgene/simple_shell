@@ -14,31 +14,34 @@
  */
 void execute_command(char *command)
 {
-	pid_t child_pid = fork();
+    pid_t child_pid = fork();
 
-	if (child_pid == -1)
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
+    if (child_pid == -1)
+    {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
 
-	if (child_pid == 0)
-	{
-		char *const args[] = {"/bin/sh", "-c", command, NULL};
-		char *const env[] = {NULL};
+    if (child_pid == 0)
+    {
+        char *temp_args[] = {"/bin/sh", "-c", NULL, NULL};
+        char *const env[] = {NULL};
 
-		if (execve("/bin/sh", args, env) == -1)
-		{
-			perror("execve");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		int status;
+        /* Use a temporary array for static initialization */
+        temp_args[2] = command;
 
-		waitpid(child_pid, &status, 0);
-	}
+        if (execve("/bin/sh", temp_args, env) == -1)
+        {
+            perror("execve");
+            exit(EXIT_FAILURE);
+        }
+    }
+    else
+    {
+        int status;
+
+        waitpid(child_pid, &status, 0);
+    }
 }
 
 /**
@@ -48,40 +51,42 @@ void execute_command(char *command)
  */
 int main(void)
 {
-	char input[MAX_INPUT_SIZE];
+    size_t input_length;
+    char input[MAX_INPUT_SIZE];
 
-	while (1)
-	{
-		printf("Ashton$: ");
-		if (fgets(input, sizeof(input), stdin) == NULL)
-		{
-			if (feof(stdin))
-			{
-				printf("Exit\n");
-				break;
-			}
-			else
-			{
-				perror("fgets");
-				exit(EXIT_FAILURE);
-			}
-		}
+    while (1)
+    {
+        printf("Ashton$: ");
+        if (fgets(input, sizeof(input), stdin) == NULL)
+        {
+            if (feof(stdin))
+            {
+                printf("Exit\n");
+                break;
+            }
+            else
+            {
+                perror("fgets");
+                exit(EXIT_FAILURE);
+            }
+        }
 
-		size_t input_length = strlen(input);
+        input_length = strlen(input);
 
-		if (input_length > 0 && input[input_length - 1] == '\n')
-		{
-			input[input_length - 1] = '\0';
-		}
+        if (input_length > 0 && input[input_length - 1] == '\n')
+        {
+            input[input_length - 1] = '\0';
+        }
 
-		if (strcmp(input, "exit") == 0)
-		{
-			printf("Exited!\n");
-			break;
-		}
+        if (strcmp(input, "exit") == 0)
+        {
+            printf("Exited!\n");
+            break;
+        }
 
-		execute_command(input);
-	}
+        execute_command(input);
+    }
 
-	return (0);
+    return 0;
 }
+

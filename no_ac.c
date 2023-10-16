@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int ac, char**av)
+int main(int argc, char **argv)
 {
-	int i;
+    printf("Argument count (argc) is %d\n", argc);
 
-	printf("argv theme is argv[]\n");
+    while (*argv != NULL)
+    {
+        printf("argv = %s\n", *argv);
+        argv++;
+    }
 
-	while (*av !=NULL)
-	{
-		printf("argv = %s\n", *av);
-		av++;
-	}
-
-	return (0);
+    return 0;
 }
+
