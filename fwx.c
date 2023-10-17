@@ -31,6 +31,7 @@ int main(void)
 	{
 		wait(&status);
 	}
+	return(0);
 }
 
 
