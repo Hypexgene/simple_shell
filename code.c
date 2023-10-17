@@ -3,7 +3,7 @@
 /**
  * main - Entry point of the program
  *
- * This program compares boys and girls and prints the greater
+ * This program compares numbers of boys and girls, prints the greater number.
  *
  * Return: Always 0 if successful.
  */
