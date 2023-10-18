@@ -12,8 +12,8 @@
 #include <string.h>
 
 void exec(char *c);
-char* userinput();
-int spl(const char* sm, const char* mt);
+char *userinput(void);
+int spl(const char *sm, const char *mt);
 void _prompt(void);
 size_t _strlen(const char *l);
 int p_man(char pm);
