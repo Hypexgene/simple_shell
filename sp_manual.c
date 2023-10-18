@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * spl - Compares two strings lexicographically.
- * @sm: The first string to compare.
- * @mt: The second string to compare.
+ * spl - Compares two strings alphabetically
+ * @sm: The first string to be compared.
+ * @mt: The second string to be compared.
  *
- * Return: 0 if strings are identical, otherwise the difference of the first
- *         differing characters.
+ * Return: 0 if strings are same, or contrast of the first varing characters.
+ *
  */
 int spl(const char *sm, const char *mt)
 {

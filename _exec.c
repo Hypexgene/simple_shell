@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * exec - Executes a command using fork and execve.
+ * exec - Command is executed by using execve and fork.
  * @c: The command to be executed.
  */
 void exec(char *c)

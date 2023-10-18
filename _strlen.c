@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _strlen - Calculates the length of a string.
- * @l: The string to calculate the length of.
+ * _strlen - Calculates the string's length.
+ * @l: The string calculating the length.
  *
- * Return: The length of the string.
+ * Return: The string's length.
  */
 size_t _strlen(const char *l)
 {

@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * userinput - Reads a line of input from the standard input.
+ * userinput - Reads a line of input from standard input.
  *
  * Return: A pointer to the input string.
+ *
  */
 char *userinput()
 {
